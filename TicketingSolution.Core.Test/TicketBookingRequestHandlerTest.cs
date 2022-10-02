@@ -12,6 +12,7 @@ namespace TicketingSolution.Core
         private readonly TicketBookingRequestHandler _handler;
         private readonly TicketBookingRequest _request;
         private readonly Mock<ITicketBookingService> _ticketBookingServiceMock;
+        private List<Ticket> _availableTicket;
 
         public Ticket_Booking_Request_Handler_Test()
         {
@@ -20,10 +21,14 @@ namespace TicketingSolution.Core
             {
                 Name = "Test Name",
                 Family = "Test Family",
-                Email = "Test Email"
+                Email = "Test Email",
+                Date = DateTime.Now
             };
 
+            _availableTicket = new List<Ticket> { new Ticket() { Id = 1}};
             _ticketBookingServiceMock = new Mock<ITicketBookingService>();
+            _ticketBookingServiceMock.Setup(x => 
+                    x.GetAvailableTickets(_request.Date)).Returns(_availableTicket);
 
             _handler = new TicketBookingRequestHandler(_ticketBookingServiceMock.Object);
         }
@@ -77,6 +82,18 @@ namespace TicketingSolution.Core
             savedBooking.Name.ShouldBe(_request.Name);
             savedBooking.Family.ShouldBe(_request.Family);
             savedBooking.Email.ShouldBe(_request.Email);
+            savedBooking.TicketId.ShouldBe(_availableTicket.First().Id);
+
+        }
+
+        [Fact]
+        public void Should_Not_Save_Ticket_Booking_Request_If_None_Available()
+        {
+            _availableTicket.Clear();
+            _handler.BookService(_request);
+            _ticketBookingServiceMock.Verify(x=>
+                x.Save(It.IsAny<TicketBooking>()),Times.Never);
         }
     }
 }
+ 

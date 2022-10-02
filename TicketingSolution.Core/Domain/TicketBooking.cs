@@ -1,9 +1,9 @@
-﻿namespace TicketingSolution.Core.Domain
+﻿using TicketingSolution.Core.Model;
+
+namespace TicketingSolution.Core.Domain
 {
-    public class TicketBooking
+    public class TicketBooking : ServiceBookingBase
     {
-        public string Name { get; set; }
-        public string Family { get; set; }
-        public string Email { get; set; }
+        public int TicketId { get; set; }
     }
 }
