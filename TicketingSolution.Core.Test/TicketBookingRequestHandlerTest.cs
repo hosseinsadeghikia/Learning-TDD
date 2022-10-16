@@ -1,7 +1,9 @@
-﻿using Moq;
+﻿using System.Diagnostics.Contracts;
+using Moq;
 using Shouldly;
 using TicketingSolution.Core.DataServices;
 using TicketingSolution.Core.Domain;
+using TicketingSolution.Core.Enums;
 using TicketingSolution.Core.Handler;
 using TicketingSolution.Core.Model;
 
@@ -25,9 +27,9 @@ namespace TicketingSolution.Core
                 Date = DateTime.Now
             };
 
-            _availableTicket = new List<Ticket> { new Ticket() { Id = 1}};
+            _availableTicket = new List<Ticket> { new Ticket() { Id = 1 } };
             _ticketBookingServiceMock = new Mock<ITicketBookingService>();
-            _ticketBookingServiceMock.Setup(x => 
+            _ticketBookingServiceMock.Setup(x =>
                     x.GetAvailableTickets(_request.Date)).Returns(_availableTicket);
 
             _handler = new TicketBookingRequestHandler(_ticketBookingServiceMock.Object);
@@ -75,8 +77,8 @@ namespace TicketingSolution.Core
 
             _handler.BookService(_request);
 
-            _ticketBookingServiceMock.Verify(x=>
-                x.Save(It.IsAny<TicketBooking>()),Times.Once);
+            _ticketBookingServiceMock.Verify(x =>
+                x.Save(It.IsAny<TicketBooking>()), Times.Once);
 
             savedBooking.ShouldNotBeNull();
             savedBooking.Name.ShouldBe(_request.Name);
@@ -91,9 +93,43 @@ namespace TicketingSolution.Core
         {
             _availableTicket.Clear();
             _handler.BookService(_request);
-            _ticketBookingServiceMock.Verify(x=>
-                x.Save(It.IsAny<TicketBooking>()),Times.Never);
+            _ticketBookingServiceMock.Verify(x =>
+                x.Save(It.IsAny<TicketBooking>()), Times.Never);
+        }
+
+        [Theory]
+        [InlineData(BookingResultFlag.Failure, false)]
+        [InlineData(BookingResultFlag.Success, true)]
+        public void Should_Return_SuccessOrContractFailure_Flag_In_Result(BookingResultFlag bookingSuccessFlag, bool isAvailable)
+        {
+            if (!isAvailable)
+            {
+                _availableTicket.Clear();
+            }
+
+            var result = _handler.BookService(_request);
+
+            bookingSuccessFlag.ShouldBe(result.Flag);
+        }
+
+        [Theory]
+        [InlineData(1, true)]
+        [InlineData(null, false)]
+        public void Should_Return_TicketBookingId_In_Result(int? ticketBookingId, bool isAvailable)
+        {
+            if (!isAvailable)
+            {
+                _availableTicket.Clear();
+            }
+            else
+            {
+                _ticketBookingServiceMock.Setup(x =>
+                        x.Save(It.IsAny<TicketBooking>()))
+                    .Callback<TicketBooking>(booking =>
+                    {
+                        TicketBooking.Id = ticketBookingId.Value;
+                    });
+            }
         }
     }
 }
- 
