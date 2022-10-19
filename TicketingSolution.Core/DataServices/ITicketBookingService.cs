@@ -1,4 +1,4 @@
-﻿using TicketingSolution.Core.Domain;
+﻿using TicketingSolution.Domain.Domain;
 
 namespace TicketingSolution.Core.DataServices
 {

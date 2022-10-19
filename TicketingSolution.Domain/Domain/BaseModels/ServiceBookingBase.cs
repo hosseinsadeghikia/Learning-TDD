@@ -1,4 +1,4 @@
-﻿namespace TicketingSolution.Core.Model
+﻿namespace TicketingSolution.Domain.Domain.BaseModels
 {
     public abstract class ServiceBookingBase
     {

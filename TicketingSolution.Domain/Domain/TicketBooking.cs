@@ -1,10 +1,14 @@
-﻿using TicketingSolution.Core.Model;
+﻿using TicketingSolution.Domain.Domain.BaseModels;
 
-namespace TicketingSolution.Core.Domain
+namespace TicketingSolution.Domain.Domain
 {
     public class TicketBooking : ServiceBookingBase
     {
         public static int Id { get; set; }
+
+
+        public Ticket Ticket { get; set; }
+
         public int TicketId { get; set; }
     }
 }
