@@ -9,9 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketingSolution.Core", "T
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketingSolution.Domain", "TicketingSolution.Domain\TicketingSolution.Domain.csproj", "{D2EAB2F7-1DBA-4CA8-85B2-2DCD8AB91240}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketingSolution.Persistence", "TicketingSolution.Persistence\TicketingSolution.Persistence.csproj", "{2B908AEA-6856-46BD-840F-DB124FD13981}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketingSolution.Persistence", "TicketingSolution.Persistence\TicketingSolution.Persistence.csproj", "{2B908AEA-6856-46BD-840F-DB124FD13981}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketingSolution.Persistence.Tests", "TicketingSolution.Persistence.Tests\TicketingSolution.Persistence.Tests.csproj", "{BE41633B-148F-412F-89D9-D690CEDFDCC3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketingSolution.Persistence.Tests", "TicketingSolution.Persistence.Tests\TicketingSolution.Persistence.Tests.csproj", "{BE41633B-148F-412F-89D9-D690CEDFDCC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketingSolution.API", "TicketingSolution.API\TicketingSolution.API.csproj", "{AF870D21-6F14-451E-BF5B-8C2B1A1694A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketingSolution.API.Test", "TicketingSolution.API.Test\TicketingSolution.API.Test.csproj", "{6E0EF944-CD5C-4B83-A2A7-33EC2DC6AB17}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{BE41633B-148F-412F-89D9-D690CEDFDCC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE41633B-148F-412F-89D9-D690CEDFDCC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE41633B-148F-412F-89D9-D690CEDFDCC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF870D21-6F14-451E-BF5B-8C2B1A1694A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF870D21-6F14-451E-BF5B-8C2B1A1694A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF870D21-6F14-451E-BF5B-8C2B1A1694A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF870D21-6F14-451E-BF5B-8C2B1A1694A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E0EF944-CD5C-4B83-A2A7-33EC2DC6AB17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E0EF944-CD5C-4B83-A2A7-33EC2DC6AB17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E0EF944-CD5C-4B83-A2A7-33EC2DC6AB17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E0EF944-CD5C-4B83-A2A7-33EC2DC6AB17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
