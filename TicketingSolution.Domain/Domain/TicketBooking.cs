@@ -4,7 +4,7 @@ namespace TicketingSolution.Domain.Domain
 {
     public class TicketBooking : ServiceBookingBase
     {
-        public static int Id { get; set; }
+        public int Id { get; set; }
 
 
         public Ticket Ticket { get; set; }

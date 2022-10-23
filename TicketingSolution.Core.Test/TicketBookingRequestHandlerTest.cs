@@ -126,7 +126,7 @@ namespace TicketingSolution.Core
                         x.Save(It.IsAny<TicketBooking>()))
                     .Callback<TicketBooking>(booking =>
                     {
-                        TicketBooking.Id = ticketBookingId.Value;
+                        booking.Id = ticketBookingId.Value;
                     });
             }
         }
