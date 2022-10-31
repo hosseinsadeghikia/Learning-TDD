@@ -6,7 +6,7 @@ using TicketingSolution.Domain.Domain.BaseModels;
 
 namespace TicketingSolution.Core.Handler
 {
-    public class TicketBookingRequestHandler
+    public class TicketBookingRequestHandler : ITicketBookingRequestHandler
     {
         private readonly ITicketBookingService _ticketBookingService;
 
